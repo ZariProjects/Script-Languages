@@ -25,13 +25,19 @@ class Account:
         print(f"Name: {self.name}; Account id: {self.account_id}; Balance: {self.balance}")
 
     def info_save_in_json(self):
-        information = {
+        info = {
             'Name' : self.name,
             'Id' : self.id,
             'Balance' : self.balance
         }
         with open("json_file.json", "w+") as file:
-            json.dump(information, file)
+            json.dump(info, file)
+
+    def get_info_from_json_file(self):
+        Account.info_save_in_json(self)
+        file = open('json_file.json')
+        account = json.load(file)
+        print(account)
         
         
         
@@ -43,3 +49,4 @@ print(acc.balance)
 acc.get_money(9950)
 print(acc.balance)
 acc.info_save_in_json()
+acc.get_info_from_json_file()
